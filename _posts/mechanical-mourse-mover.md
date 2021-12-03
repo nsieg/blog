@@ -7,20 +7,163 @@ author:
   picture: '/assets/blog/authors/tim.jpeg'
 ogImage:
   url: '/assets/blog/mouse-mover-mec/mouse.jpg'
+tags: one,two
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+When Covid-19 hit the enterprise workforce, many were sent home to work with devices configured for use in an open space office. One of the *features* of these devices typically is to lock the screen after some minutes of idle time. When working from home, this is unconvenient as there is no one who could sniff sensible data while you are in the kitchen. However, you have to log back in with multiple factors after every coffee break.
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+In this post I am going to present a solution that uses an old USB mouse, a RaspberryPi and some Lego to build a mechanical mouse moving device that keeps your laptop from going idle.
 
-```java
-public static main() {
-  
+## Solution Preview
+
+Activated over a REST API, a Java application schedules a motor to run for few seconds, which mechanically moves a standard USB mouse contained in a Lego frame and connected to my corporate laptop.
+
+![Mouse mover in action](/assets/blog/mouse-mover-mec/jiggle.mp4)
+
+## API
+
+The central software component on the RaspberryPi provides a RESTful API that allows to configure the movement of the mouse. The parameter `secondsInterval` defines for how long the motor should move the mouse before waiting `secondsDelay` until the next movement. Besides, movement can be started or stopped and the current configuration can be retrieved.
+
+```json
+GET /movement
+
+{ 
+  "enabled": true,
+  "secondsInterval": 5,
+  "secondsDelay": 300
 }
 ```
 
-![Image](/assets/blog/authors/tim.jpeg)
+In the example, the mouse is moved for 5 seconds. After that, the program waits 300 seconds before it moves the mouse 
+again for 5 seconds. The API can be used with any client inside the local network using the DHCP assigned address of 
+the RaspberryPi.
 
-## Lorem Ipsum
+## Hardware
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+The following components were used to build this project:
+ * USB Mouse
+ * RaspberryPi 3
+ * Lego PowerFunctions XL Motor
+ * MotoDriver Board L298N
+ * Lego bricks
+ * Jumper Wires
+
+![Schematic overview of components](/assets/blog/mouse-mover-mec/sketch.png)
+
+The MotoDriver board is powered by an external 12V power supply. According to the signals received from the RaspberryPI, 
+it powers the XL Motor. The board allows to control two motors, however, only one is connected in this setup. To connect 
+the Lego motor, I have stripped the wires and connected them directly to the MotoDriver board.
+
+The construction of the Lego frame will depend primarily on what bricks you are lucky to find in your basement - at least 
+it was in my case. Of course, there are multiple designs that will do the job. What was crucial, however, was to have a 
+mechnical transmission that slowed down the rotation of the motor. I achieved this by using a small gear wheel directly 
+on the motor and a bigger one next to it.
+
+## Software
+The combination of the RaspberryPi and the MotoDriver board allows for a simple software control of the motor. 
+
+### Motor control 
+By setting one pin to *high (GPIO24)* we can set the motor into rotation. Setting it to low will stop it. Using a dedicated PWM pin (GPIO12), we can configure the motor speed.
+
+:::tip
+Some initial *calibration* is required to have the motor run smoothly. Setting the speed too low gives the motor a hard time 
+to start moving when it stood still before. Setting it too high will make the sled, which holds the mouse, fly off. 
+:::
+
+This brings the core motor functions down to the following snippet:
+
+```java
+@Component
+@Slf4j
+public class PiMotorService implements MotorService {
+
+    private GpioPinDigitalOutput PIN_TWO;
+    private GpioPinPwmOutput PIN_PWM;
+
+    private final GpioController gpio = GpioFactory.getInstance();
+
+    public PiMotorService() {
+        PIN_TWO = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, PinState.LOW);
+        PIN_PWM = gpio.provisionPwmOutputPin(RaspiPin.GPIO_26, 250);
+        PIN_PWM.setPwmRange(1024);
+    }
+
+    @Override
+    public void changeSpeed(int runSpeed) {
+        log.info("Changing speed to {}", runSpeed);
+        PIN_PWM.setPwm(runSpeed);
+    }
+
+    @Override
+    public void start() {
+        log.info("Starting motor by setting pin two to high");
+        PIN_TWO.high();
+    }
+
+    @Override
+    public void stop() {
+        log.info("Stopping motor by setting pin two to low");
+        PIN_TWO.low();
+    }
+}
+```
+
+:::note
+The pin numbers in the Java GPIO library used are different from the numbers typically used. For example, the PWM pin
+GPIO12 is refered to as GPIO_26 in the code example.
+:::
+
+### Start at boot
+
+To keep the application running and automatically start it after boot, we can register it as a systemd service. First, 
+we create a service script `mousemover.service` java as follows:
+
+```bash
+[Unit]
+Description=Manage mousemover application
+
+[Service]
+WorkingDirectory=/opt/mousemover
+ExecStart=/usr/bin/java -Xms128m -Xmx256m -jar mousemover.jar
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+:::note
+Java has to be installed on the RaspberryPI and the application jar has to present at `TODO dir` for this service script to work.
+:::
+
+We move this script to `/etc/systemd/whatever` and activate it using the following commands:
+
+```bash
+systemctl enable mousemover
+systemctl start mousemover
+```
+
+## Usage
+
+When the RaspberryPI is booted and the external 12V power supply connected, the device can be activated using an API call. 
+I would typically do this before lunch break:
+
+```bash
+curl -X PUT http://192.168.0.128:8080/movement
+```
+
+:::tip
+Of course, you could also configure the default behavior to be to start moving right after the application startup. In this
+case, you would only need to power the system and avoid this call.
+:::
+
+When you no longer need the automatic movement as you are back working actively, you may deactive it using
+
+```bash
+curl -X DELETE http://192.168.0.128:8080/movement
+```
+
+## References
+
+The full source code for the Java application can be found on [Github](https://github/nsieg)
