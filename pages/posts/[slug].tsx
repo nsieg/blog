@@ -11,6 +11,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
+import Toc from '../../components/toc'
 
 type Props = {
   post: PostType
@@ -51,8 +52,15 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 author={post.author}
                 tags={post.tags}
               />
-              <PostBody content={post.content} />
+              <div className="hidden md:flex mx-auto justify-center">
+                <PostBody content={post.content} />
+                <Toc />
+              </div>
+              <div className="block md:hidden">
+                <PostBody content={post.content} />
+              </div>
             </article>
+            
           </>
         )}
       </Container>

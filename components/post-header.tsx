@@ -31,7 +31,7 @@ const PostHeader = ({ title, coverImage, date, author, tags }: Props) => {
             Posted:&nbsp;
             <DateFormatter dateString={date} />
           </span>
-          {tags.split(",").map((x) => <span className="ml-1 italic">#{x}</span>)}
+          {tags.split(",").map((x) => <span className="ml-1 italic" key={"tag-"+x}>#{x}</span>)}
         </div>
       </div>
     </>
