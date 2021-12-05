@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { throttle } from "lodash";
 
+type Headings = {
+  titles: {
+    title: string;
+    depth: number;
+  }[];
+  nodes: HTMLElement[];
+  minDepth: number;
+};
+
 // Used to calculate each heading's offset from the top of the page.
 // This will be compared to window.scrollY to determine which heading
 // is currently active.
@@ -10,17 +19,6 @@ const accumulateOffsetTop = (el: HTMLElement | null, totalOffset = 0) => {
     el = el.offsetParent as HTMLElement;
   }
   return totalOffset;
-};
-
-type Title = {
-  title: string;
-  depth: number;
-};
-
-type Headings = {
-  titles: Title[];
-  nodes: HTMLElement[];
-  minDepth: number;
 };
 
 export default function Toc() {
@@ -72,8 +70,8 @@ export default function Toc() {
 
   return (
     <>
-      <aside className="hidden md:block sticky top-6 max-w-sm max-h-36 z-30 mx-8 px-3 py-5">
-        <h2 className="block border-l-4 pl-2 border-green-500 pb-2">
+      <aside className="sticky top-6 max-w-sm mx-8 px-3 py-5">
+        <h2 className="block border-l-4 pl-2 text-green-500 border-green-500 pb-2">
           {tocTitle || `Contents`}
         </h2>
         <nav className="">

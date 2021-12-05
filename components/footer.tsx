@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
-        <nav className="py-10 flex justify-center">
+        <nav className="py-10 flex flex-wrap justify-center">
           <span className="text-xl tracking-tight leading-tight">
             {"© " + new Date().getFullYear() + " by"}
           </span>

@@ -51,12 +51,14 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 author={post.author}
                 tags={post.tags}
               />
-              <div className="hidden md:flex mx-auto justify-center">
-                <PostBody content={post.content} />
-                <Toc />
-              </div>
-              <div className="block md:hidden">
-                <PostBody content={post.content} />
+              <div className="lg:flex lg:w-full">
+                <div className="hidden md:block flex-shrink w-full"></div>
+                <div className="flex-shrink-0">
+                  <PostBody content={post.content} />
+                </div>
+                <div className="hidden lg:block flex-shrink w-full">
+                  <Toc />
+                </div>
               </div>
             </article>
           </>

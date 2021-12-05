@@ -3,6 +3,7 @@ type Node = import("unist").Node;
 type Properties = {
   [key: string]: string;
 };
+
 const el = (tag: string, properties: Properties, childs: Node[]) => {
   return {
     type: "element",
@@ -18,7 +19,7 @@ const el = (tag: string, properties: Properties, childs: Node[]) => {
 };
 
 const elC = (tag: string, className: string, childs: Node[]) => {
-  return el(tag, { className: className }, childs);
+  return el(tag, { className }, childs);
 };
 
 const paths: { [key: string]: string } = {
@@ -44,8 +45,9 @@ export default function (contentNodes: Node[], admonType: string): Node {
     },
     [path]
   );
-  const span = elC("span", "admonition-icon", [svg]);
-  const h5 = elC("h5", "", [span, <Node>{ type: "text", value: admonType }]);
+  const spanIcon = elC("span", "admonition-icon", [svg]);
+  const spanText = elC("span", "align-text-top", [<Node>{ type: "text", value: admonType }]);
+  const h5 = elC("h5", "", [spanIcon, spanText]);
   const heading = elC("div", "admonition-heading", [h5]);
   const content = elC("div", "admonition-content", [...contentNodes]);
   const admon = elC("div", "admonition admonition-" + admonType, [
