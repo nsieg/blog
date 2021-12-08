@@ -1,5 +1,9 @@
 module.exports = {
-  purge: ["./components/**/*.tsx", "./pages/**/*.tsx"],
+  purge: {
+    content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
+    // toc.tsx dynamically generates padding
+    safelist: ["pl-2", "pl-4", "pl-6", "pl-8"],
+  },
   theme: {
     extend: {
       colors: {
