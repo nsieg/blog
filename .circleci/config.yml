@@ -11,6 +11,11 @@ jobs:
     docker:
       - image: cimg/node:lts
     steps:
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+            - ./.next/cache
       - checkout
       - node/install-packages
       - run:
