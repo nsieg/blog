@@ -2,7 +2,6 @@ import Layout from "../components/layout";
 import Container from "../components/container";
 import Head from "next/head";
 import Header from "../components/header";
-import Image from "next/image";
 
 type Props = {};
 
@@ -27,7 +26,7 @@ const About = (props: Props) => {
             </div>
 
             <div className="pl-8 w-40 flex-shrink-0 my-auto">
-              <Image
+              <img
                 src="/assets/about/nils.jpg"
                 alt="Portrait of Nils"
                 width="800px"

@@ -1,13 +1,12 @@
 ---
-title: 'Keep your mouse moving with Lego Motor + RaspberryPi'
+title: 'Keep your mouse moving with Lego & RaspberryPi'
 coverImage: '/assets/blog/mouse-mover-mec/mouse.jpg'
 date: '2020-06-01T12:30:00.000Z'
 author:
   name: Nils Siegfried
-  picture: '/assets/blog/authors/tim.jpeg'
 ogImage:
   url: '/assets/blog/mouse-mover-mec/mouse.jpg'
-tags: one,two
+tags: raspberrypi,java,spring,api
 ---
 
 When Covid-19 hit the enterprise workforce, many were sent home to work with devices configured for use in an open space office. One of the *features* of these devices typically is to lock the screen after some minutes of idle time. When working from home, this is unconvenient as there is no one who could sniff sensible data while you are in the kitchen. However, you have to log back in with multiple factors after every coffee break.
