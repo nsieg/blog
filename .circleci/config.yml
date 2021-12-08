@@ -12,6 +12,9 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package-lock.json" }}
       - node/install-packages
       - run:
           name: Build
