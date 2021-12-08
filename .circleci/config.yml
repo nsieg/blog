@@ -28,7 +28,7 @@ jobs:
         - attach_workspace:
             at: /home/circleci/project
         - run: sudo apt-get update && sudo apt-get install -y lftp
-        - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_TEST,$FTP_PASSWORD_TEST $FTP_HOST_TEST; mirror -Rev . / --ignore-time --parallel=10"
+        - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_TEST,$FTP_PASSWORD_TEST $FTP_HOST_TEST; mirror -R -e --delete-first --transfer-all . / --ignore-time --parallel=10"
 
   deploy-prod:
         docker:
@@ -37,7 +37,7 @@ jobs:
           - attach_workspace:
               at: /home/circleci/project
           - run: sudo apt-get update && sudo apt-get install -y lftp
-          - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_PROD,$FTP_PASSWORD_PROD $FTP_HOST_PROD; mirror -Rev . / --ignore-time --parallel=10"
+          - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_PROD,$FTP_PASSWORD_PROD $FTP_HOST_PROD; mirror -R -e --delete-first --transfer-all . / --ignore-time --parallel=10"
 
 workflows:
   version: 2
