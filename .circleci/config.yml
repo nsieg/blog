@@ -7,7 +7,7 @@ orbs:
 
 jobs:
   
-  build-and-test:  
+  build:  
     docker:
       - image: cimg/node:lts
     steps:
@@ -15,14 +15,20 @@ jobs:
       - node/install-packages
       - run:
           name: Build
-          command: npm run build
+          command: npm run build && npm run export
       - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
-          # taken to be the root directory of the workspace.
           root: /home/circleci/project
-          # Must be relative path from root
           paths:
-            - dist
+            - out
+
+  deploy-test:
+      docker:
+        - image: cimg/base:stable
+      steps:
+        - attach_workspace:
+            at: /home/circleci/project
+        - run: sudo apt-get update && sudo apt-get install -y lftp
+        - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_TEST,$FTP_PASSWORD_TEST $FTP_HOST_TEST; mirror -Rev . / --ignore-time --parallel=10"
 
   deploy-prod:
         docker:
@@ -31,15 +37,25 @@ jobs:
           - attach_workspace:
               at: /home/circleci/project
           - run: sudo apt-get update && sudo apt-get install -y lftp
-          - run: cd dist && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_PROD,$FTP_PASSWORD_PROD $FTP_HOST_PROD; mirror -Rev . / --ignore-time --parallel=10"
+          - run: cd out && lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME_PROD,$FTP_PASSWORD_PROD $FTP_HOST_PROD; mirror -Rev . / --ignore-time --parallel=10"
 
 workflows:
-  sample: 
+  version: 2
+  wf-test: 
     jobs:
-      - build-and-test
+      - build
+      - deploy-test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: test
+  wf-prod: 
+    jobs:
+      - build
       - deploy-prod:
           requires:
-            - build-and-test
+            - build
           filters:
             branches:
               only: master
