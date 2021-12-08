@@ -41,18 +41,20 @@ jobs:
 
 workflows:
   version: 2
-  wf-test: 
+  wf: 
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: 
+                - test
+                - master
       - deploy-test:
           requires:
             - build
           filters:
             branches:
               only: test
-  wf-prod: 
-    jobs:
-      - build
       - deploy-prod:
           requires:
             - build
