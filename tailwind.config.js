@@ -10,6 +10,7 @@ module.exports = {
         "accent-1": "#FAFAFA",
         "accent-2": "#EAEAEA",
         "accent-7": "#333",
+        "ocean-green": "#cc3f0c",
         success: "#0070f3",
         cyan: "#79FFE1",
       },
@@ -31,7 +32,7 @@ module.exports = {
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
         medium: "0 8px 30px rgba(0, 0, 0, 0.12)",
-        link: "0 -2px 0 0 rgba(227, 11, 93, .8) inset",
+        link: "0 -2px 0 0 rgba(204, 63, 12, .8) inset",
       },
     },
   },
