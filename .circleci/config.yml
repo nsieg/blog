@@ -16,9 +16,6 @@ jobs:
       - run:
           name: Build
           command: npm run build && npm run export
-      - run:
-          name: Debug
-          command: pwd && ls -lisah
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
