@@ -22,5 +22,23 @@
 }
 
 .markdown li {
-  @apply ml-10 list-disc;
+  @apply ml-10 list-decimal;
+}
+
+.markdown ol li {
+  @apply list-decimal;
+}
+
+.markdown ul li {
+  @apply list-disc;
+}
+
+/* levels in a list should appear close to each other */
+.markdown li ol,
+.markdown li ul {
+  @apply mt-0;
+}
+
+.markdown a {
+  @apply shadow-link;
 }

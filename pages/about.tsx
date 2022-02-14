@@ -20,8 +20,8 @@ const About = (props: Props) => {
                 👋 Hi, my name is Nils.
               </h1>
               <p className="py-1">
-                Software and Information Technology are my passion. This is my
-                personal blog about hobby projects.
+                This is my personal blog about hobby projects. I am interested
+                in Information Technology and like to experiment with software.
               </p>
             </div>
 
@@ -37,8 +37,8 @@ const About = (props: Props) => {
           </div>
           <div className="break-words">
             <p className="py-1">
-              I have studied computer science and business information
-              mangement, holding a Ph.D. in Information Systems. You can learn
+              I have studied Computer Science and Business Information
+              Mangement, holding a Ph.D. in Information Systems. You can learn
               more about my research on{" "}
               <a
                 href="https://www.researchgate.net/profile/Nils-SiegfriedResearchGate"
@@ -53,7 +53,7 @@ const About = (props: Props) => {
               <a href="https://ing.de" className="no-underline shadow-link">
                 ING
               </a>{" "}
-              as a software engineer and technical product owner. You can learn
+              as a Software Engineer and Technical Product Owner. You can learn
               more about my professional experience on{" "}
               <a
                 href="https://linkedin.com/nilssiegfried"
@@ -65,7 +65,10 @@ const About = (props: Props) => {
             </p>
             <p className="py-1">
               If you would like to get in touch, please feel free to{" "}
-              <a href="#" className="no-underline shadow-link">
+              <a
+                href="mailto:nils@nilssiegfried.de"
+                className="no-underline shadow-link"
+              >
                 write me an email
               </a>
               .

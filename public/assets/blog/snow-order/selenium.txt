@@ -1,0 +1,35 @@
+<input id="sys_display.IO:2763d75edbb80850066c4f630596196a" name="sys_display.IO:2763d75edbb80850066c4f630596196a" class="questionsetreference form-control element_reference_input" onfocus="if (!this.ac) new AJAXReferenceCompleter(this, 'IO:2763d75edbb80850066c4f630596196a', '', '', 'u_cmdb_ci_appl_repo');" onkeydown="return acReferenceKeyDown(this, event);" onkeyup="return acReferenceKeyUp(this, event)" onkeypress="return acReferenceKeyPress(this, event)" onpaste="return acReferenceKeyPress(this, event)" role="combobox" aria-autocomplete="list" ac_columns="" ac_order_by="" value="" aria-required="true" aria-expanded="false">
+
+<input id="sys_display.IO:19465f52db3c0850066c4f6305961977" name="sys_display.IO:19465f52db3c0850066c4f6305961977" class="questionsetreference form-control element_reference_input" onfocus="if (!this.ac) new AJAXTableCompleter(this, 'IO:19465f52db3c0850066c4f6305961977', '', '', 'sys_user');" onkeydown="return acReferenceKeyDown(this, event);" onkeyup="return acReferenceKeyUp(this, event)" onkeypress="return acReferenceKeyPress(this, event)" onpaste="return acReferenceKeyPress(this, event)" role="combobox" aria-autocomplete="list" ac_columns="email" ac_order_by="name" value="" aria-required="true" aria-expanded="false">
+
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.1.1</version>
+</dependency>
+
+fun main() {
+  
+    val users = listOf("user1", "user2", "user3")
+
+    val driver: WebDriver = ChromeDriver()
+    driver.get("https://<instance>.service-now.com")
+
+    val wait = WebDriverWait(driver, Duration.ofSeconds(10))
+    wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-settings-button")))
+
+    driver.get("https://ingdibaprod.service-now.com/com.glideapp.servicecatalog_cat_item_view.do?<...>")
+
+    for (user in users) {
+        val userField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IO:123")))
+        userField.clear()
+        userField.sendKeys(user)
+
+        val descriptionField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IO:456")))
+        descriptionField.clear()
+        descriptionField.sendKeys("This is $user")
+
+        driver.findElement(By.id("oi_add_to_cart_button")).click()
+    }
+
+}

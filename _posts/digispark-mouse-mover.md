@@ -1,5 +1,5 @@
 ---
-title: 'Simulate mouse movement with a DigiSpark'
+title: 'Simulate mouse movement with a DigiSpark microcontroller'
 coverImage: '/assets/blog/mouse-mover-digi/circuit.png'
 date: '2021-05-14T12:30:00.000Z'
 author:

@@ -12,10 +12,9 @@ const Footer = () => {
             nils siegfried
           </span>
           <span className="text-xl tracking-tight leading-tight mr-2">
-            - all rights reserved
+            all rights reserved
           </span>
           <span className="text-xl mx-2 leading-tight">impressum</span>
-          <span className="text-xl mx-2 leading-tight">contact</span>
         </nav>
       </Container>
     </footer>
