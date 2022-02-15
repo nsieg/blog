@@ -4,7 +4,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script type="text/javascript" src="/lib/matomo.js"></script>
+        </Head>
         <body>
           <Main />
           <NextScript />
