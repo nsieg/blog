@@ -70,7 +70,7 @@ export default function Toc() {
 
   return (
     <>
-      <aside className="sticky top-6 max-w-sm mx-8 px-3 py-5">
+      <aside className="sticky top-6 max-w-sm ml-8 px-3 py-5">
         <h2 className="block border-l-4 pl-2 text-uline border-uline pb-2">
           {tocTitle || `Contents`}
         </h2>
