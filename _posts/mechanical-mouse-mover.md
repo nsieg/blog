@@ -1,11 +1,11 @@
 ---
 title: 'Keep your mouse moving with Lego motor & RaspberryPi'
-coverImage: '/assets/blog/mouse-mover-mec/mouse.jpg'
+coverImage: '/assets/blog/mouse-mover-mec/mouse.webp'
 date: '2020-06-01T12:30:00.000Z'
 author:
   name: Nils Siegfried
 ogImage:
-  url: '/assets/blog/mouse-mover-mec/mouse.jpg'
+  url: '/assets/blog/mouse-mover-mec/mouse.webp'
 tags: raspberrypi,java,spring,api
 ---
 
@@ -47,7 +47,7 @@ The following components were used to build this project:
  * Lego bricks
  * Jumper Wires
 
-![Schematic overview of components](/assets/blog/mouse-mover-mec/sketch.png)
+![Schematic overview of components](/assets/blog/mouse-mover-mec/sketch.webp)
 
 The MotoDriver board is powered by an external 12V power supply. According to the signals received from the RaspberryPI, 
 it powers the XL Motor. The board allows to control two motors, however, only one is connected in this setup. To connect 
@@ -136,7 +136,7 @@ WantedBy=multi-user.target
 Java has to be installed on the RaspberryPI and the application jar has to present at `/opt/mousemover` for this service script to work.
 :::
 
-We move this script to `/etc/systemd/whatever` and activate it using the following commands:
+We move this script to `/etc/systemd/system` and activate it using the following commands:
 
 ```bash
 systemctl enable mousemover

@@ -1,11 +1,11 @@
 ---
 title: 'Measure home power consumption with a RaspberryPi & TCRT5000 infrared sensor'
-coverImage: '/assets/blog/power-meter/meter.png'
+coverImage: '/assets/blog/power-meter/meter.webp'
 date: '2021-12-08T12:30:00.000Z'
 author:
   name: Nils Siegfried
 ogImage:
-  url: '/assets/blog/power-meter/meter.png'
+  url: '/assets/blog/power-meter/meter.webp'
 tags: raspberrypi,python
 ---
 
@@ -42,7 +42,7 @@ In this post, I focus on the second option: reading the infrared interface of th
 
 The image shows the infrared sensor hold in place by some Lego just in front of the infrared interface. The three cables are connected to the RaspberryPi.
 
-![TCRT5000 in Lego Frame on power meter](/assets/blog/power-meter/newmeter.jpg)
+![TCRT5000 in Lego Frame on power meter](/assets/blog/power-meter/newmeter.webp)
 
 ## Hardware
 
@@ -56,7 +56,7 @@ simple constructions from cardboard and duct tape - or if you would like to have
 
 The sensor is connected with three wires to the RaspberryPi as shown in the sketch.
 
-![Sketch showing sensor and raspberryPi connection](/assets/blog/power-meter/sketch.png)
+![Sketch showing sensor and raspberryPi connection](/assets/blog/power-meter/sketch.webp)
 
 ## Software
 

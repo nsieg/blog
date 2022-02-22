@@ -51,7 +51,7 @@ export default function (contentNodes: Node[], admonType: string): Node {
   const heading = elC("div", "admonition-heading", [h5]);
   const content = elC("div", "admonition-content", [...contentNodes]);
   const admon = elC("div", "admonition admonition-" + admonType, [
-    heading,
+   // heading,
     content,
   ]);
 

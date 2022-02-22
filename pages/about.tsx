@@ -13,10 +13,10 @@ const About = (props: Props) => {
         <Head>
           <title>The Title</title>
         </Head>
-        <div className="md:max-w-4xl mx-auto text-xl text-gray-800 mt-12 mb-8">
-          <div className="w-full flex sm:justify-between justify-center align-middle flex-wrap-reverse sm:flex-nowrap mb-8">
+        <div className="md:max-w-4xl mx-auto text-xl text-gray-800 mt-12 sm:mb-8">
+          <div className="w-full flex sm:justify-between justify-center align-middle flex-wrap-reverse sm:flex-nowrap sm:mb-8">
             <div className="my-auto">
-              <h1 className="text-2xl md:text-4xl pb-2">
+              <h1 className="text-2xl md:text-4xl pb-2 sm:text-left text-center">
                 👋 Hi, my name is Nils.
               </h1>
               <p className="py-1">
