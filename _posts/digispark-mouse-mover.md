@@ -1,11 +1,11 @@
 ---
 title: 'Simulate mouse movement with a DigiSpark microcontroller'
-coverImage: '/assets/blog/mouse-mover-digi/circuit.png'
+coverImage: '/assets/blog/mouse-mover-digi/circuit.webp'
 date: '2021-05-14T12:30:00.000Z'
 author:
   name: Nils Siegfried
 ogImage:
-  url: '/assets/blog/mouse-mover-digi/circuit.png'
+  url: '/assets/blog/mouse-mover-digi/circuit.webp'
 tags: digispark,microcontroller
 ---
 
@@ -35,7 +35,7 @@ If your are only using MacOS, you may look into **Caffeine** as a software alter
 
 ## Hardware
 
-![DigiSpark connected to USB](/assets/blog/mouse-mover-digi/digi.jpg)
+![DigiSpark connected to USB](/assets/blog/mouse-mover-digi/digi.webp)
 
 I am using the DigiSpark Rev. 3 (ATTiny 85) board. As I use more than one corporate laptop, I have bought a 5x pack.
 

@@ -1,11 +1,11 @@
 ---
 title: 'Automate web UIs with Selenium'
-coverImage: '/assets/blog/snow-order/order.jpg'
+coverImage: '/assets/blog/snow-order/order.webp'
 date: '2022-01-08T10:30:00.000Z'
 author:
   name: Nils Siegfried
 ogImage:
-  url: '/assets/blog/snow-order/order.jpg'
+  url: '/assets/blog/snow-order/order.webp'
 tags: kotlin,selenium,automation
 ---
 
@@ -17,7 +17,7 @@ In this post I am going to give an example on how to use [Selenium](https://www.
 
 The following order dialog lets us order technical users via the ServiceNow catalog. We have to specify a name and a description, add the item to the shopping cart and repeat this process if we require more than one user.
 
-![ServiceNow order dialog](/assets/blog/snow-order/screen_order.png)
+![ServiceNow order dialog](/assets/blog/snow-order/screen_order.webp)
 
 ## Setup
 
@@ -133,7 +133,7 @@ fun main() {
 
 When running, you can watch the actions inside the browser window and should end up like this:
 
-![ServiceNow cart with items](/assets/blog/snow-order/screen_end.png)
+![ServiceNow cart with items](/assets/blog/snow-order/screen_end.webp)
 
 :::warning
 You may encounter a situation where you cannot find DOM elements in your code even if they do exist in the browser dev tools. This may be due to them being inside an `iframe`. In such a case, first switch to the frame and continue:
