@@ -175,7 +175,6 @@ const About = (props: Props) => {
             entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
             werden derartige Inhalte umgehend entfernen.
           </p>
-          <p>&nbsp;</p>
         </div>
       </Container>
     </Layout>

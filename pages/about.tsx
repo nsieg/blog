@@ -41,7 +41,7 @@ const About = (props: Props) => {
               Mangement, holding a Ph.D. in Information Systems. You can learn
               more about my research on{" "}
               <a
-                href="https://www.researchgate.net/profile/Nils-SiegfriedResearchGate"
+                href="https://www.researchgate.net/profile/Nils-Siegfried"
                 className="no-underline shadow-link"
               >
                 ResearchGate
@@ -74,7 +74,7 @@ const About = (props: Props) => {
               .
             </p>
             <p className="py-1">
-              Most of the code from the projects presented on this blog can be
+              The code for this blog and some of the presented projects can be
               found on{" "}
               <a
                 href="https://github.com/nsieg"
