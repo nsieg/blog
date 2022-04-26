@@ -12,7 +12,6 @@ export default async function markdownToHtml(markdown: string) {
   const res = await unified()
     .use(remarkParse)
     .use(remarkStringify)
-    // @ts-expect-error: No overload matches this call
     .use(remarkPrism, {
       transformInlineCode: true,
       plugins: ["line-numbers"],
