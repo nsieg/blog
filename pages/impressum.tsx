@@ -119,7 +119,7 @@ const About = (props: Props) => {
           </p>
           <p>&nbsp;</p>
           <p>
-            <h3>Disclaimer (Haftungsausschluss)</h3>
+            <h2>Disclaimer (Haftungsausschluss)</h2>
           </p>
           <p>
             <h3>1. Haftung f&#252;r Inhalte</h3>

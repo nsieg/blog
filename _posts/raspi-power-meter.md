@@ -31,7 +31,7 @@ To get a better insight into power consumption, there are two general options:
     1. Read the infrared interface of your power meter
 
 The first option requires a professional electrician as high-voltage is involved. I did not further look into this option as I wanted a cheap, DIY solution. Again, there is more than one way to implement
-a non-invasive measurement. There are many tutorials on the internet (e.g., openenergymeter.org) that use the first method. It is based around the principle that a clamp-formed current transformer is positioned around the main cable. Based on the reading of this sensor, one can infer the current going through the wire. 
+a non-invasive measurement. There are many tutorials on the internet (e.g., [OpenEnergyMonitor](https://openenergymonitor.org/)) that use the first method. It is based around the principle that a clamp-formed current transformer is positioned around the main cable. Based on the reading of this sensor, one can infer the current going through the wire. 
 
 :::tip
 If you have multiple different main wires (e.g., one for your house, one for your garden), this option may give you more flexibility.
@@ -77,7 +77,7 @@ pause()
 ```
 
 :::important
-In this code, 18 refers to the GPIO. If you haved used a different wiring setup, you may have to adjust this number accordingly.
+In this code, 18 refers to the GPIO. If you have used a different wiring setup, you may have to adjust this number accordingly.
 :::
 
 :::tip
