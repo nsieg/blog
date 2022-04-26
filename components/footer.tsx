@@ -1,4 +1,5 @@
 import Container from "./container";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -6,15 +7,12 @@ const Footer = () => {
       <Container>
         <nav className="py-10 flex flex-wrap justify-center">
           <span className="text-xl tracking-tight leading-tight">
-            {"© " + new Date().getFullYear() + " by"}
+            {"© " + new Date().getFullYear() + " all rights reserved | "}
           </span>
-          <span className="text-xl font-bold tracking-tight mx-1 leading-tight">
-            nils siegfried
-          </span>
-          <span className="text-xl tracking-tight leading-tight mr-2">
-            all rights reserved
-          </span>
-          <span className="text-xl mx-2 leading-tight">impressum</span>
+          <span className="text-xl mx-2 leading-tight">
+            <Link href="/impressum">
+              <a className="hover:underline">impressum</a>
+            </Link></span>
         </nav>
       </Container>
     </footer>
