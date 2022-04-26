@@ -7,6 +7,7 @@ author:
 ogImage:
   url: '/assets/blog/mouse-mover-digi/circuit.webp'
 tags: digispark,microcontroller
+zaehlmarkeId: '20986904c74744c3b9b22c92cde907fd'
 ---
 
 I wrote about the problem of using an enterprise laptop at home in a previous post. After being idle for some time, you get logged out and have to log back in using multiple factors. Initially, I solved this challenge by building a mechanical mouse mover. While the solution works, it has multiple disadvantages:

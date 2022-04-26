@@ -12,6 +12,7 @@ type PostType = {
   };
   content: string;
   tags: string;
+  zaehlmarkeId: string;
 };
 
 export default PostType;

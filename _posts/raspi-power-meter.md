@@ -7,6 +7,7 @@ author:
 ogImage:
   url: '/assets/blog/power-meter/meter.webp'
 tags: raspberrypi,python
+zaehlmarkeId: '5b966f5ba3f34ab38abf417a9ecdd49a'
 ---
 
 ## Challenge

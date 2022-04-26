@@ -12,6 +12,7 @@ import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 import PostType from "../../types/post";
 import Toc from "../../components/toc";
+import Zaehlmarke from "../../components/zaehlmarke";
 
 type Props = {
   post: PostType;
@@ -55,6 +56,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 <div className="hidden md:block flex-shrink w-full"></div>
                 <div className="flex-shrink-0">
                   <PostBody content={post.content} />
+                  <Zaehlmarke id={post.zaehlmarkeId} />
                 </div>
                 <div className="hidden lg:block flex-shrink w-full">
                   <Toc />
@@ -86,6 +88,7 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
     "tags",
+    "zaehlmarkeId",
   ]);
   const content = await markdownToHtml(post.content || "");
 

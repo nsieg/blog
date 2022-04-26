@@ -7,6 +7,7 @@ author:
 ogImage:
   url: '/assets/blog/snow-order/order.webp'
 tags: kotlin,selenium,automation
+zaehlmarkeId: 'a02d8d1a9ac74a07a25e5dc8d5ebdc52'
 ---
 
 Web UIs are designed for humans while APIs are for automation. Sometimes you encounter systems that do not offer an API or whose API is deactivated due to corporate regulations. If you are facing the task to use such a system in many interactions with repeating or only slightly different inputs, you may look for some kind of automation.

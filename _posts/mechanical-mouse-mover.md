@@ -7,6 +7,7 @@ author:
 ogImage:
   url: '/assets/blog/mouse-mover-mec/mouse.webp'
 tags: raspberrypi,java,spring,api
+zaehlmarkeId: '23aa29dd842a43beb6a5b673a907f8e0'
 ---
 
 When Covid-19 hit the enterprise workforce, many were sent home to work with devices configured for use in an open space office. One of the *features* of these devices typically is to lock the screen after some minutes of idle time. When working from home, this is unconvenient as there is no one who could sniff sensible data while you are in the kitchen. However, you have to log back in with multiple factors after every coffee break.
