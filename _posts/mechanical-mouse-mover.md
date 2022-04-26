@@ -166,4 +166,6 @@ curl -X DELETE http://192.168.0.128:8080/movement
 
 ## References
 
-The full source code for the Java application can be found on [Github](https://github.com/nsieg/mousemover)
+Source code for the Java application can be found on [Github](https://github.com/nsieg/mousemover)
+
+Cover image by [Joshua J. Cotten](https://unsplash.com/@jcotten) on [Unsplash](https://unsplash.com/photos/QNaBO0oHeyo)

@@ -97,3 +97,7 @@ After the upload is completed, you can plug in the device again and see it worki
 ## Usage
 
 I have connected the device to my laptop using a USB extension cable. It is permanently plugged in and keeps the system awake during the work day. By now, I have not noticed any problems using it with both Windows and MacOS. 
+
+## References
+
+Cover image by [Manuel](https://unsplash.com/@manueljota) on [Unsplash](https://unsplash.com/photos/CANL3bzp6wU)

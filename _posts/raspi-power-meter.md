@@ -87,3 +87,7 @@ changes in your program output.
 ### Monitoring / Visualization
 
 At this point, there are plenty of options to save and analyze the data gathered from the sensor. I am currently sending each impulse as a measurement to an InfluxDB time series database. The InfluxDB runs smoothly on a RaspberryPi 3B (there are native binaries for arm64) and brings a WebUI similar to Graphana to inspect your data in custom queries.
+
+## References
+
+Cover image by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/photos/xVptEZzgVfo)

@@ -56,7 +56,7 @@ const About = (props: Props) => {
               as a Software Engineer and Technical Product Owner. You can learn
               more about my professional experience on{" "}
               <a
-                href="https://linkedin.com/nilssiegfried"
+                href="https://linkedin.com/in/nilssiegfried"
                 className="no-underline shadow-link"
               >
                 LinkedIn

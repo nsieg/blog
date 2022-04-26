@@ -146,4 +146,6 @@ driver.switchTo(frame)
 driver.findElement(By.id("id_of_your_element_that_is_inside_the_iframe"))
 ```
 
+## References
 
+Cover image by [Eduardo Soares](https://unsplash.com/@eduschadesoares) on [Unsplash](https://unsplash.com/photos/QsYXYSwV3NU)
