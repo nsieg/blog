@@ -33,7 +33,7 @@ module.exports = {
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
         medium: "0 8px 30px rgba(0, 0, 0, 0.12)",
-        link: "0 -2px 0 0 rgba(46, 41, 78, .8) inset",
+        link: "0 -2px 0 0 rgba(253, 214, 65, .8) inset",
       },
     },
   },
